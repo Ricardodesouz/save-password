@@ -16,12 +16,14 @@ public abstract class Password {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nameDescription;
+    private String password;
 
     public Password(){};
 
-    public Password(Integer id, String nameDescription) {
+    public Password(Integer id, String nameDescription, String password) {
         this.id = id;
         this.nameDescription = nameDescription;
+        this.password = password;
     }
 
     public Integer getId() {
@@ -38,6 +40,14 @@ public abstract class Password {
 
     public void setNameDescription(String nameDescription) {
         this.nameDescription = nameDescription;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
