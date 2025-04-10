@@ -10,8 +10,8 @@ public class PasswordWebSite extends Password {
 
     public PasswordWebSite(){};
 
-    public PasswordWebSite(Integer id, String nameDescription, String password, String url,String userName){
-        super(id, nameDescription, password);
+    public PasswordWebSite(Integer id, String nameDescription,Folder folder, String password, String url,String userName){
+        super(id, nameDescription, password, folder);
         this.url = url;
         this.userName = userName;
 
@@ -37,7 +37,7 @@ public class PasswordWebSite extends Password {
     public String toString() {
         return "PasswordWebSite{" +
                 "url='" + url + '\'' +
-                ", userName='" + userName + '\'' +
+                ", name description ='" + getNameDescription()+ '\'' +
                 '}';
     }
 }
