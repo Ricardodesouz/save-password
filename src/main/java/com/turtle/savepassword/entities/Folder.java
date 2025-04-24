@@ -2,10 +2,13 @@ package com.turtle.savepassword.entities;
 
 
 import com.turtle.savepassword.entities.assist.Password;
+import com.turtle.savepassword.entities.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 import java.util.List;
@@ -17,17 +20,19 @@ public class Folder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String Description;
-    private Integer userId;
+    @ManyToOne
+    @JoinColumn(name = "ID_USER")
+    private User user;
 
     @OneToMany(mappedBy = "folder")
     private List<Password> passwordList = new ArrayList<>();
 
     public Folder(){};
 
-    public Folder(Integer id, String description, Integer userId) {
+    public Folder(Integer id, String description, User user) {
         this.id = id;
         Description = description;
-        this.userId = userId;
+        this.user= user;
     }
 
     public Integer getId() {
@@ -46,12 +51,12 @@ public class Folder {
         Description = description;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(User user) {
+        this.user = user;
     }
 
     public List<Password> getPasswordList() {
